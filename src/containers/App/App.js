@@ -9,7 +9,7 @@ import authAction from '../../redux/auth/actions';
 import appActions from '../../redux/app/actions';
 import Sidebar from '../Sidebar/Sidebar';
 import Topbar from '../Topbar/Topbar';
-import ThemeSwitcher from '../../containers/ThemeSwitcher';
+// import ThemeSwitcher from '../../containers/ThemeSwitcher';
 import AppRouter from './AppRouter';
 import { siteConfig } from '../../config.js';
 import { AppLocale } from '../../index';
@@ -73,7 +73,7 @@ export class App extends Component {
                     </Footer>
                   </Layout>
                 </Layout>
-                <ThemeSwitcher />
+                {/* <ThemeSwitcher /> */}
               </Layout>
             </AppHolder>
           </ThemeProvider>
