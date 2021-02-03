@@ -8,22 +8,18 @@ const fakeApiCall = true; // auth0 or express JWT
 
 const signupUrl = `http://localhost:8080/login`;
 
-function loginApi(username, password) {
-   
+async function loginApi(username, password) {
     console.log(`${username}, ${password}`);
-    return fetch(signupUrl, {
+    const response = await fetch(signupUrl, {
         method: 'POST',
-        mode: 'no-cors',
         headers: new Headers({'content-type': 'application/json'}),
         body: JSON.stringify({ "username" : username, "password": password }),
-    })
-        .then(handleApiErrors) // we'll make this in a second
-        .then(response => {
-            console.log("Response", response);
-            return response.json();
-        })
-        .then(json => json)
-        .catch((error) => { throw error })
+    });
+    if (response.status !== 200) {
+        throw Error(response.statusText)
+    }
+    const data = await response.json();
+    return data;
 }
 
 function* loginFlow(action) {
